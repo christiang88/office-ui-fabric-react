@@ -11,6 +11,7 @@ import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Exampl
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
 import { IDocPageProps, ChecklistStatus } from '../../common/DocPage.types';
+import { ButtonLazyMenuExample } from 'office-ui-fabric-react/lib/components/Button/examples/Button.LazyMenu.Example';
 export { ChecklistStatus };
 
 const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
@@ -21,6 +22,7 @@ const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
 const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
+const ButtonLazyMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.LazyMenu.Example.tsx') as string;
 const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
 
@@ -68,6 +70,11 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Contextual Menu Button',
       code: ButtonContextualMenuExampleCode,
       view: <ButtonContextualMenuExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
+    },
+    {
+      title: 'Menu Button with lazily fetched menu Items',
+      code: ButtonLazyMenuExampleCode,
+      view: <ButtonLazyMenuExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
       title: 'Action Button',
