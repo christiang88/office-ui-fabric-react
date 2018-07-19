@@ -43,6 +43,7 @@ export * from './overflow';
 export * from './properties';
 export * from './resources';
 export * from './rtl';
+export * from './scheduleLayoutInvalidatingOperation';
 export * from './scroll';
 export * from './string';
 export * from './styled';

@@ -1,4 +1,4 @@
-import { getWindow } from '../../Utilities';
+import { getWindow } from './dom';
 
 /**
  * We use requestAnimationFrames as the basis for layout operations, batching as many layout operations as
@@ -29,12 +29,12 @@ let layoutOperations: (() => void)[] = [];
  */
 export function scheduleLayoutInvalidatingOperation<T>(fn: () => T): Promise<T> {
   ensureRafScheduled();
-  return new Promise<T>(resolve => {
+  return new Promise<T>((resolve: (value: T) => void) => {
     layoutOperations.push(() => resolve(fn()));
   });
 }
 
-function ensureRafScheduled() {
+function ensureRafScheduled(): void {
   if (!rafScheduled) {
     const win = getWindow();
     if (win) {
@@ -44,8 +44,14 @@ function ensureRafScheduled() {
   }
 }
 
-function executeLayoutInvalidatingOperations() {
-  layoutOperations.forEach(x => x());
+/**
+ * Executes all layout invalidating operations. This leverages the fact that all promises get executed at the
+ * end of the current current run of the event loop. This means all the layout invalidating operations would
+ * happen before any of the promises get resolved. This guarantees that the DOM will not be mutated until all
+ * layout invalidating operations have taken place.
+ */
+function executeLayoutInvalidatingOperations(): void {
+  layoutOperations.forEach((x: () => void) => x());
   layoutOperations = [];
   rafScheduled = false;
 }

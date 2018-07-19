@@ -6,10 +6,10 @@ import {
   divProperties,
   getNativeProps,
   provideContext,
-  createRef
+  createRef,
+  scheduleLayoutInvalidatingOperation
 } from '../../Utilities';
 import { IResizeGroupProps, IResizeGroupStyles, IResizeGroupStyleProps } from './ResizeGroup.types';
-import { scheduleLayoutInvalidatingOperation } from 'office-ui-fabric-react/lib/components/ResizeGroup/LayoutInvalidationScheduler';
 
 const RESIZE_DELAY = 16;
 
